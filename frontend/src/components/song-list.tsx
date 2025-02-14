@@ -11,6 +11,8 @@ export function SongList() {
       <SongItem />
       <SongItem />
       <SongItem />
+
+      <p className="song-list-seemore">Ver mais</p>
     </div>
   );
 }
