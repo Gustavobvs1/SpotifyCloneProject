@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
+import { ItemObjProps } from "./single-item";
 
-export function SongItem() {
+export function SongItem({ id, image, name, duration, index }: ItemObjProps) {
   return (
-    <Link to="/song/1" className="song-item">
+    <Link to={`/song/${id}`} className="song-item">
       <div className="song-item-number-album">
-        <p>1</p>
+        <p>{index === undefined ? "" : index + 1}</p>
         <div className="song-item-album">
           <img
             className="song-item-image"
-            src="https://i.scdn.co/image/ab67616d00001e022774b00531d558bc19e12a24"
-            alt="Image da música X"
+            src={image}
+            alt={`Imagem de ${name}`}
           />
-          <p className="song-item-name">Isso aí</p>
+          <p className="song-item-name">{name}</p>
         </div>
       </div>
 
-      <p>2:30</p>
+      <p>{duration}</p>
     </Link>
   );
 }

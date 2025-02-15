@@ -1,33 +1,42 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Player } from "../components/player";
+import { songsArray } from "../assets/database/songs";
+import { artistArray } from "../assets/database/artists";
 
 export function Song() {
+  const { id } = useParams();
+
+  const [songObj] = songsArray.filter(
+    (currentSong) => currentSong.id === Number(id)
+  );
+
+  const [artistFromSong] = artistArray.filter(
+    (item) => item.name === songObj.artist
+  );
+
   return (
     <div className="song">
       <div className="song-container">
         <div className="song-container-image">
-          <img
-            src="https://i.scdn.co/image/ab67616d00001e022774b00531d558bc19e12a24"
-            alt="Imagem da música X"
-          />
+          <img src={songObj.image} alt={`Imagem de ${songObj.name}`} />
         </div>
       </div>
 
       <div className="song-bar">
-        <Link to="artist/1" className="song-artist-image">
+        <Link to={`/artist/${artistFromSong.id}`} className="song-artist-image">
           <img
             width={75}
             height={75}
-            src="https://i.scdn.co/image/ab676161000051744dcd8a3bff84cd7703892cf4"
-            alt="Imagem do artista Y"
+            src={artistFromSong.image}
+            alt={`Imagem do artista ${artistFromSong.name}`}
           />
         </Link>
 
-        <Player />
+        <Player duration={songObj.duration} songId={songObj.id} />
 
         <div className="song-info">
-          <p className="song-name">Isso aí</p>
-          <p>Meu amigo arnaldo</p>
+          <p className="song-name">{songObj.name}</p>
+          <p>{songObj.artist}</p>
         </div>
       </div>
     </div>

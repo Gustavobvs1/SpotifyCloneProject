@@ -11,6 +11,7 @@ export interface ItemObjProps {
   id: number;
   banner?: string;
   idPath?: string;
+  index?: number;
 }
 
 export function SingleItem({ image, name, artist, idPath, id }: ItemObjProps) {
