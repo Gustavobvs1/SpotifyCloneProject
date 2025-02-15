@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { ItemObjProps } from "./single-item";
 
-export function SongItem({ id, image, name, duration, index }: ItemObjProps) {
+export function SongItem({ _id, image, name, duration, index }: ItemObjProps) {
   return (
-    <Link to={`/song/${id}`} className="song-item">
+    <Link to={`/song/${_id}`} className="song-item">
       <div className="song-item-number-album">
         <p>{index === undefined ? "" : index + 1}</p>
         <div className="song-item-album">

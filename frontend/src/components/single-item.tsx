@@ -8,15 +8,15 @@ export interface ItemObjProps {
   duration?: string;
   artist?: string;
   audio?: string;
-  id: number;
+  _id: string;
   banner?: string;
   idPath?: string;
   index?: number;
 }
 
-export function SingleItem({ image, name, artist, idPath, id }: ItemObjProps) {
+export function SingleItem({ image, name, artist, idPath, _id }: ItemObjProps) {
   return (
-    <Link to={`${idPath}/${id}`} className="single-item">
+    <Link to={`${idPath}/${_id}`} className="single-item">
       <div className="single-item-div-image-button">
         <div className="single-item-div-image">
           <img
